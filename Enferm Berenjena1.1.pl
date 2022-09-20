@@ -1,0 +1,109 @@
+/*******PREGUNTAS*******/
+/*****á---@****é---'#'*****í---$****ó---%***ú---&*****ñ---_****¿---!***/
+
+
+pregunta1('!La enfermedad aparece sobre tallos, hojas y frutos? ').
+pregunta1('!La enfermedad aparece sobre tallos, hojas y frutos? ', 'si', 'pregunta2').
+pregunta1('!La enfermedad aparece sobre tallos, hojas y frutos? ', 'no', 'pregunta5').
+
+pregunta2('!En los frutos se observan manchas circulares hundidas? ').
+pregunta2('!En los frutos se observan manchas circulares hundidas? ', 'si', 'pregunta3').
+pregunta2('!En los frutos se observan manchas circulares hundidas? ', 'no', 'resp_desconocida').
+
+pregunta3('!En tiempo h&medo se forma una masa rosada de esporas? ').
+pregunta3('!En tiempo h&medo se forma una masa rosada de esporas? ', 'si', 'pregunta4').
+pregunta3('!En tiempo h&medo se forma una masa rosada de esporas? ', 'no', 'resp_desconocida').
+
+pregunta4('!Su tallo se dobla por encima de la linea del suelo, luego caen y mueren? ').
+pregunta4('!Su tallo se dobla por encima de la linea del suelo, luego caen y mueren? ', 'si', 'resp_roya_del_frijol').
+pregunta4('!Su tallo se dobla por encima de la linea del suelo, luego caen y mueren? ', 'no', 'resp_desconocida').
+
+pregunta5('!En el tallo aparecen lesiones alargadas de color pardo oscuro, en las cuales se pueden observar los picnidios de color gris@ceo? ').
+pregunta5('!En el tallo aparecen lesiones alargadas de color pardo oscuro, en las cuales se pueden observar los picnidios de color gris@ceo? ', 'si', 'pregunta6').
+pregunta5('!En el tallo aparecen lesiones alargadas de color pardo oscuro, en las cuales se pueden observar los picnidios de color gris@ceo? ', 'no', 'resp_desconocida').
+
+pregunta6('!Con el tiempo aparecen en las hojas manchas ovales gris@ceas de 3mm de tama_o aproximadamente? ').
+pregunta6('!Con el tiempo aparecen en las hojas manchas ovales gris@ceas de 3mm de tama_o aproximadamente? ', 'si', 'pregunta7').
+pregunta6('!Con el tiempo aparecen en las hojas manchas ovales gris@ceas de 3mm de tama_o aproximadamente? ', 'no', 'resp_desconocida').
+
+pregunta7('!Los frutos presentan manchas deprimidas acuosas y blandas las cuales aumentan su di@metro y producen anillos conc#ntricos? ').
+pregunta7('!Los frutos presentan manchas deprimidas acuosas y blandas las cuales aumentan su di@metro y producen anillos conc#ntricos? ', 'si', 'pregunta8').
+pregunta7('!Los frutos presentan manchas deprimidas acuosas y blandas las cuales aumentan su di@metro y producen anillos conc#ntricos? ', 'no', 'resp_desconocida').
+
+pregunta8('!El fruto entero puede tornarse negro y momificarse en la planta? ').
+pregunta8('!El fruto entero puede tornarse negro y momificarse en la planta? ', 'si', 'resp_Podredumbre_frutos').
+pregunta8('!El fruto entero puede tornarse negro y momificarse en la planta? ', 'no', 'resp_desconocida').
+
+
+
+/********DIAGNOSTICOS*******/
+diagnostico:- aparece_sobre_tallos_hojas_frutos(si),
+              en_frutos_manchas_circulares_hundidas(si),
+			  en_humedad_forma_masa_rosada_esporas(si),
+			  tallo_se_dobla_encima_suelo_caen_mueren(si),
+			  resp_roya_del_frijol.
+diagnostico:- aparece_sobre_tallos_hojas_frutos(si),
+              en_frutos_manchas_circulares_hundidas(si),
+			  en_humedad_forma_masa_rosada_esporas(si),
+			  tallo_se_dobla_encima_suelo_caen_mueren(no),
+			  resp_desconocida.
+diagnostico:- aparece_sobre_tallos_hojas_frutos(si),
+              en_frutos_manchas_circulares_hundidas(si),
+			  en_humedad_forma_masa_rosada_esporas(no),
+			  resp_desconocida.
+diagnostico:- aparece_sobre_tallos_hojas_frutos(si),
+              en_frutos_manchas_circulares_hundidas(no),
+			  resp_desconocida.
+diagnostico:- aparece_sobre_tallos_hojas_frutos(no),
+              tallo_con_lesiones_alargadas_color_pardo_oscuro_con_picnidios_color_grisaceo(si),
+			  hojas_manchas_ovales_grisaceas(si),
+			  frutos_manchas_deprimidas_acuosas_blandas_que_aumentan_diametro_y_producen_anillos_concentricos(si),
+			  fruto_puede_tornarse_negro_y_momificarse(si),
+			  resp_Podredumbre_frutos.
+diagnostico:- aparece_sobre_tallos_hojas_frutos(no),
+              tallo_con_lesiones_alargadas_color_pardo_oscuro_con_picnidios_color_grisaceo(si),
+			  hojas_manchas_ovales_grisaceas(si),
+			  frutos_manchas_deprimidas_acuosas_blandas_que_aumentan_diametro_y_producen_anillos_concentricos(si),
+			  fruto_puede_tornarse_negro_y_momificarse(no),
+			  resp_desconocida.
+diagnostico:- aparece_sobre_tallos_hojas_frutos(no),
+              tallo_con_lesiones_alargadas_color_pardo_oscuro_con_picnidios_color_grisaceo(si),
+			  hojas_manchas_ovales_grisaceas(si),
+			  frutos_manchas_deprimidas_acuosas_blandas_que_aumentan_diametro_y_producen_anillos_concentricos(no),
+			  resp_desconocida.
+diagnostico:- aparece_sobre_tallos_hojas_frutos(no),
+              tallo_con_lesiones_alargadas_color_pardo_oscuro_con_picnidios_color_grisaceo(si),
+			  hojas_manchas_ovales_grisaceas(no),
+			  resp_desconocida.
+diagnostico:- aparece_sobre_tallos_hojas_frutos(no),
+              tallo_con_lesiones_alargadas_color_pardo_oscuro_con_picnidios_color_grisaceo(no),
+			  resp_desconocida.
+
+
+/*******RESPUESTAS*******/
+
+RespAntracnosis('El cultivo es afectado por Colletotrichum coccodes, conocida com&nmente como Antracnosis.').
+
+resp_Podredumbre_frutos('El cultivo es afectado por Phomopsis vexans, conocida com&nmente como Podredumbre de los frutos.').
+
+resp_desconocida('El sistema no puede identificar el tipo de hongo.').
+
+
+/*******TRATAMIENTOS**********/
+trat_agro_Antracnosis('1- Sembrar semillas libres del patógeno, previamente desinfectadas.').
+trat_agro_Antracnosis('2- Eliminar inmediatamente los restos de la cosecha.').
+trat_agro_Antracnosis('3- Sembrar en la fecha óptima indicada para su plantación.').
+trat_agro_Antracnosis('4- No efectuar resiembra con solanáceas en campos fuertemente afectados.').
+
+/*trat_bio_roya_del_frijol('').*/
+trat_quim_Antracnosis('1- Mancozeb, maneb, oxicloruro de cobre, zineb.').
+
+
+
+trat_agro_Podredumbre_frutos('1- Eliminar los residuos de la cosecha.').
+trat_agro_Podredumbre_frutos('2- Rotación de cultivos.').
+trat_agro_Podredumbre_frutos('3- Regular la humedad del suelo.').
+
+/*trat_bio_Podredumbre_frutos('').*/
+/*trat_quim_Podredumbre_frutos('').*/
+
